@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lumina Elixirs — cold-pressed botanical wellness drinks. Natural energy, zero compromise."
+    />
+    <title>Lumina Elixirs | Natural Wellness Drinks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="logo" href="#home" aria-label="Lumina Elixirs home">
+          <span class="logo-mark" aria-hidden="true"></span>
+          Lumina Elixirs
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Cold-pressed · No added sugar</p>
+          <h1>Hydration that actually feels good.</h1>
+          <p class="lead">
+            Small-batch botanical blends with adaptogens, real fruit, and
+            sparkling clarity — crafted for people who move.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#gallery">Explore flavors</a>
+            <a class="btn btn-ghost" href="#about">Our story</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="bottle-card">
+            <span class="bottle-label">Daily Ritual</span>
+            <span class="bottle-name">Citrus &amp; Ashwagandha</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="section-inner about-grid">
+          <div class="about-copy">
+            <h2>Why Lumina?</h2>
+            <p>
+              We started in a kitchen, not a boardroom. Every bottle is built
+              around whole ingredients you can pronounce — no fake “natural”
+              flavors, no shortcuts.
+            </p>
+            <p>
+              Our drinks are lightly carbonated, gently sweetened with fruit
+              and botanicals, and balanced so you get steady energy without the
+              crash.
+            </p>
+            <ul class="pill-list">
+              <li>Vegan</li>
+              <li>Gluten-free</li>
+              <li>Recyclable glass</li>
+            </ul>
+          </div>
+          <div class="about-stats">
+            <article class="stat">
+              <span class="stat-value">12</span>
+              <span class="stat-label">botanicals in our core blend</span>
+            </article>
+            <article class="stat">
+              <span class="stat-value">0g</span>
+              <span class="stat-label">refined sugar in every recipe</span>
+            </article>
+            <article class="stat">
+              <span class="stat-value">100%</span>
+              <span class="stat-label">ingredient transparency</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section gallery" id="gallery">
+        <div class="section-inner">
+          <header class="section-head">
+            <h2>Gallery</h2>
+            <p>A few favorites from our lineup — find yours at stockists near you.</p>
+          </header>
+          <div class="gallery-grid">
+            <figure class="gallery-card gallery-card--1">
+              <figcaption>
+                <strong>Morning Glow</strong>
+                <span>Ginger · Yuzu · Green tea</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-card gallery-card--2">
+              <figcaption>
+                <strong>Forest Mist</strong>
+                <span>Mint · Cucumber · Lime</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-card gallery-card--3">
+              <figcaption>
+                <strong>Sunset Bloom</strong>
+                <span>Hibiscus · Berry · Rose</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-card gallery-card--4">
+              <figcaption>
+                <strong>Deep Roots</strong>
+                <span>Beet · Pomegranate · Eleuthero</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="section-inner contact-grid">
+          <div class="contact-copy">
+            <h2>Contact us</h2>
+            <p>
+              Wholesale, events, or just want to say hi? We read every message
+              and usually reply within two business days.
+            </p>
+            <address class="contact-address">
+              <a href="mailto:hello@luminaelixirs.example">hello@luminaelixirs.example</a><br />
+              <span>142 River Mint Lane, Portland, OR</span>
+            </address>
+          </div>
+          <form class="contact-form" action="#" method="post">
+            <label class="field">
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">Lumina Elixirs</p>
+        <p class="footer-meta">&copy; <span id="year"></span> Lumina Elixirs. Drink well.</p>
+        <a class="footer-top" href="#home">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
