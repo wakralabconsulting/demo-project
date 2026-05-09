@@ -1,5 +1,6 @@
-# Deploy static site to Hostinger on every push to `main`.
-# Configure FTP credentials in: Repo → Settings → Secrets and variables → Actions.
+# Deploy static site to Hostinger on every push to `main` via SSH/SCP.
+# Add secrets in: Repo → Settings → Secrets and variables → Actions.
+# Do not commit passwords or private keys to this repository.
 name: Deploy to Hostinger
 
 on:
@@ -8,7 +9,7 @@ on:
       - main
 
 concurrency:
-  group: hostinger-ftp-deploy
+  group: hostinger-ssh-deploy
   cancel-in-progress: true
 
 jobs:
@@ -18,31 +19,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Resolve remote directory
-        id: remote
+      - name: Resolve SSH port and remote directory
+        id: conn
         shell: bash
         run: |
-          d="${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}"
-          if [ -z "$d" ]; then
-            d="public_html"
+          p="${{ secrets.HOSTINGER_SSH_PORT }}"
+          if [ -z "$p" ]; then
+            p="65002"
           fi
-          case "$d" in
+          t="${{ secrets.HOSTINGER_SSH_TARGET }}"
+          if [ -z "$t" ]; then
+            u="${{ secrets.HOSTINGER_SSH_USERNAME }}"
+            t="/home/${u}/public_html"
+          fi
+          case "$t" in
             */) ;;
-            *) d="${d}/" ;;
+            *) t="${t}/" ;;
           esac
-          echo "path=${d}" >> "$GITHUB_OUTPUT"
+          echo "port=${p}" >> "$GITHUB_OUTPUT"
+          echo "target=${t}" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy files over FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+      - name: Upload site over SSH (SCP)
+        uses: appleboy/scp-action@v1
         with:
-          server: ${{ secrets.HOSTINGER_FTP_HOST }}
-          username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
-          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-          server-dir: ${{ steps.remote.outputs.path }}
-          local-dir: ./
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-          log-level: standard
+          host: ${{ secrets.HOSTINGER_SSH_HOST }}
+          port: ${{ steps.conn.outputs.port }}
+          username: ${{ secrets.HOSTINGER_SSH_USERNAME }}
+          password: ${{ secrets.HOSTINGER_SSH_PASSWORD }}
+          source: "index.html,css,js"
+          target: ${{ steps.conn.outputs.target }}
+          strip_components: 0
+          overwrite: true
